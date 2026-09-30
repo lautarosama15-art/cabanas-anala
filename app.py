@@ -19,7 +19,7 @@ st.set_page_config(
 )
 
 WHATSAPP = "5491164792325"
-MAPS = "https://maps.app.goo.gl/qATFhQcSDCi4pQLj8"
+MAPS = "https://maps.google.com/?q=Delta+de+Tigre"
 
 CALENDARIOS = {
     "Cabaña A": "e72a2ae4a579f15286ba92ebe80bd1c4593513837038a72879d9143777ec5c8e@group.calendar.google.com",
@@ -45,12 +45,14 @@ def whatsapp_url(mensaje):
 
 
 def conectar_google_calendar():
+    # Lee directamente los secretos configurados en Streamlit Cloud (formato TOML)
     credenciales_dict = dict(st.secrets)
     credenciales = service_account.Credentials.from_service_account_info(
         credenciales_dict,
         scopes=["https://www.googleapis.com/auth/calendar.readonly"],
     )
     return build("calendar", "v3", credentials=credenciales)
+
 
 def cabana_disponible(servicio, calendar_id, entrada, salida):
     inicio = entrada.isoformat() + "T00:00:00-03:00"
@@ -88,7 +90,6 @@ galeria = [foto for foto in fotos if foto.name.lower() != "foto5.jpg"][:6]
 
 css = f"""
 <style>
-/* Reset global de Streamlit corrigiendo el problema del calendario */
 #MainMenu, footer {{ visibility: hidden; }}
 header[data-testid="stHeader"] {{ visibility: hidden; }}
 
@@ -105,7 +106,6 @@ html {{ scroll-behavior: smooth; }}
     max-width: 100% !important;
 }}
 
-/* Textura suave de fondo */
 .stApp::before {{
     content: "";
     position: fixed;
@@ -115,7 +115,6 @@ html {{ scroll-behavior: smooth; }}
     background-size: 20px 20px;
 }}
 
-/* Hero Section */
 .hero {{
     width: 100%;
     min-height: 88vh;
@@ -170,7 +169,6 @@ html {{ scroll-behavior: smooth; }}
     box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }}
 
-/* Secciones Generales */
 .section {{
     max-width: 1000px;
     margin: 0 auto;
@@ -192,7 +190,6 @@ html {{ scroll-behavior: smooth; }}
     margin: 0 auto;
 }}
 
-/* Estadísticas */
 .stats {{
     display: flex;
     justify-content: center;
@@ -212,9 +209,6 @@ html {{ scroll-behavior: smooth; }}
     margin-top: 4px;
 }}
 
-/* ========================================= */
-/* ESTILOS DEL FORMULARIO DE RESERVA NATIVO  */
-/* ========================================= */
 div[data-testid="stForm"] {{
     background: #FFFFFF !important;
     border: 1px solid rgba(45,73,55,0.12) !important;
@@ -232,7 +226,6 @@ div[data-baseweb="input"], div[data-baseweb="select"] > div {{
     border: 1px solid #E2DED5 !important;
 }}
 
-/* Botones Nativos */
 div[data-testid="stFormSubmitButton"] button, div[data-testid="stButton"] button {{
     width: 100% !important;
     min-height: 52px !important;
@@ -248,9 +241,6 @@ div[data-testid="stFormSubmitButton"] button:hover, div[data-testid="stButton"] 
     background-color: #1E3025 !important;
 }}
 
-/* ========================================= */
-/* CALENDARIO POPOVER (Solución Colores)     */
-/* ========================================= */
 div[data-baseweb="calendar"] {{
     background-color: #FFFFFF !important;
     border: 1px solid rgba(45,73,55,0.12) !important;
@@ -270,8 +260,6 @@ div[data-baseweb="calendar"] div[aria-selected="true"] {{
     color: #FFFFFF !important;
 }}
 
-
-/* WhatsApp Result */
 .wa-result {{
     max-width: 500px;
     margin: 25px auto;
@@ -291,14 +279,12 @@ div[data-baseweb="calendar"] div[aria-selected="true"] {{
     box-shadow: 0 4px 15px rgba(37,211,102,0.3);
 }}
 
-/* Galería de Fotos */
 div[data-testid="stImage"] img {{
     border-radius: 16px;
     object-fit: cover;
     box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }}
 
-/* Bloque Verde */
 .green-section {{
     background: #2D4937;
     color: #F5F1E8;
@@ -317,7 +303,6 @@ div[data-testid="stImage"] img {{
     line-height: 1.8;
 }}
 
-/* Servicios Cards */
 .servicio {{
     background: rgba(255,255,255,0.5);
     border: 1px solid rgba(45,73,55,0.08);
@@ -333,7 +318,6 @@ div[data-testid="stImage"] img {{
 }}
 .servicio p {{ color: #667068; font-size: 0.95rem; line-height: 1.5; }}
 
-/* Footer */
 .site-footer {{
     background: #1E3025;
     color: #CBD2CC;
@@ -343,7 +327,6 @@ div[data-testid="stImage"] img {{
 }}
 .site-footer h2 {{ color: #F5F1E8 !important; font-size: 2rem !important; }}
 
-/* Botón Flotante Celular */
 .reserva-flotante {{ display: none; }}
 
 @media (max-width: 768px) {{
@@ -569,7 +552,6 @@ with st.container():
 
         buscar = st.form_submit_button("CONSULTAR DISPONIBILIDAD")
 
-# Procesamiento de la búsqueda
 if buscar:
     if salida <= entrada:
         st.error("La fecha de salida debe ser posterior a la de llegada.")
