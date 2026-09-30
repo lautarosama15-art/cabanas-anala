@@ -22,10 +22,10 @@ WHATSAPP = "5491164792325"
 MAPS = "https://maps.google.com/?q=Delta+de+Tigre"
 
 CALENDARIOS = {
-    "Cabaña A": "e72a2ae4a579f15286ba92ebe80bd1c4593513837038a72879d9143777ec5c8e@group.calendar.google.com",
-    "Cabaña B": "e6b0830034e9932954672850adbed53364f9d6f875dc04615a010d5a94458978@group.calendar.google.com",
-    "Cabaña C": "7ed47203a014b06795d442d2a26f7b92c324f5ef207901f69e1d50d3eada426c@group.calendar.google.com",
-    "Cabaña D": "7c69629ae0432aabbf320e333ee5fa86bd42e6a0d9d3044b175776e7e9d67ece@group.calendar.google.com",
+    "Cabaña A": "calendario-anala@cabanas-anala.iam.gserviceaccount.com",
+    "Cabaña B": "calendario-anala@cabanas-anala.iam.gserviceaccount.com",
+    "Cabaña C": "calendario-anala@cabanas-anala.iam.gserviceaccount.com",
+    "Cabaña D": "calendario-anala@cabanas-anala.iam.gserviceaccount.com",
 }
 
 
