@@ -45,8 +45,9 @@ def whatsapp_url(mensaje):
 
 
 def conectar_google_calendar():
-    credenciales = service_account.Credentials.from_service_account_file(
-        "secrets/google_calendar.json",
+    credenciales_dict = dict(st.secrets)
+    credenciales = service_account.Credentials.from_service_account_info(
+        credenciales_dict,
         scopes=["https://www.googleapis.com/auth/calendar.readonly"],
     )
     return build("calendar", "v3", credentials=credenciales)
