@@ -52,7 +52,6 @@ def conectar_google_calendar():
     )
     return build("calendar", "v3", credentials=credenciales)
 
-
 def cabana_disponible(servicio, calendar_id, entrada, salida):
     inicio = entrada.isoformat() + "T00:00:00-03:00"
     fin = salida.isoformat() + "T00:00:00-03:00"
