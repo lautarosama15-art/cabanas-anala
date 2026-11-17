@@ -44,14 +44,22 @@ def whatsapp_url(mensaje):
     return f"https://wa.me/{WHATSAPP}?text={quote(mensaje)}"
 
 
+
 def conectar_google_calendar():
-    # Lee directamente los secretos configurados en Streamlit Cloud (formato TOML)
-    credenciales_dict = dict(st.secrets)
+    credenciales_dict = dict(st.secrets["google_calendar"])
+
     credenciales = service_account.Credentials.from_service_account_info(
         credenciales_dict,
         scopes=["https://www.googleapis.com/auth/calendar.readonly"],
     )
-    return build("calendar", "v3", credentials=credenciales)
+
+    return build(
+        "calendar",
+        "v3",
+        credentials=credenciales,
+        cache_discovery=False,
+    )
+
 
 
 def cabana_disponible(servicio, calendar_id, entrada, salida):
