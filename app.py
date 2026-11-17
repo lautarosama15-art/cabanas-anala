@@ -512,7 +512,7 @@ with col3:
         """
         <div class="servicio">
             <h3>🌊 Al Aire Libre</h3>
-            <p>Muelle privado, amplio deck sobre el río y una playita de arena perfecta para disfrutar al máximo el entorno del Delta.</p>
+            <p>Muelle privado y una playita de arena perfecta para disfrutar al máximo el entorno del Delta.</p>
         </div>
         """,
         unsafe_allow_html=True,
