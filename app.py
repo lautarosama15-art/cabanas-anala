@@ -89,7 +89,7 @@ for extension in ["*.jpg", "*.jpeg", "*.png", "*.webp"]:
     fotos.extend(carpeta_fotos.glob(extension))
 
 fotos = sorted(fotos)
-galeria = [foto for foto in fotos if foto.name.lower() != "foto5.jpg"][:6]
+galeria = [foto for foto in fotos if foto.name.lower() != "foto5.jpg"]
 
 
 # ============================================================
