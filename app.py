@@ -598,11 +598,9 @@ if buscar:
                     "Te recomendamos probar con otros días."
                 )
 
-        except Exception as e:
-            st.error(
-                "Ocurrió un inconveniente al conectar con la agenda. "
-                "Por favor intenta nuevamente en unos instantes."
-            )
+  except Exception as e:
+    st.error("Error al conectar con Google Calendar:")
+    st.exception(e)      
 
 
 # ============================================================
