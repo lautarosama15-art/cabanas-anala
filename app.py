@@ -18,7 +18,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-WHATSAPP = "5491164792325"
+WHATSAPP = "5491170632052"
 MAPS = "https://maps.google.com/?q=Delta+de+Tigre"
 
 CALENDARIOS = {
